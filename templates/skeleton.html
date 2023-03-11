@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+        <link rel="stylesheet" href="/assets/normalize.css">
+        <link rel="stylesheet" href="/assets/style.css">
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <div id="background">
+        <div id="content">{% block content %}{% endblock %}</div>
+        </div>
+    </body>
+</html>

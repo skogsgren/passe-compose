@@ -1,0 +1,28 @@
+{% extends "skeleton.html" %}
+
+{% block title %} {{ post_dir|capitalize}} Index{% endblock %}
+
+{% block content %}
+<p id=back_btn><a href="../index.html">< BACK</a></p>
+
+<h1> {{post_dir|capitalize}} Index </h1>
+
+
+<table>
+<thead>
+  <tr>
+    <th>DATE</th>
+    <th>TITLE</th>
+  </tr>
+</thead>
+<tbody>
+  {% for post in posts %}
+    <tr>
+      <td>{{ post.date }}</td>
+      <td><a href="{{post.url}}">{{ post.title }}</a></td>
+    </tr>
+  {% endfor %}
+</tbody>
+</table>
+
+{% endblock %}
