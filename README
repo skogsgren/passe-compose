@@ -1,0 +1,44 @@
+PASSE COMPOSE : STATIC SITE GENERATOR
+=====================================
+
+WHY YET ANOTHER STATIC SITE GENERATOR?
+    Because I felt like it.
+
+BUT REALLY, WHY?
+    I wanted to make my own website more extensible and dynamic in a way that
+    is easy to understand, meaning third-party libraries with minimal features:
+    just a markdown parser and a template engine. This also means that it is by
+    far less feature packed than pretty much every static site generator out there
+    (by design).
+
+FEATURES:
+    - Should be fully compatible with posts written with Jekyll in mind.
+    - Different types of indexed posts, since I wanted to host both blog posts
+      and random scraps of writing, but I didn't want them in the same place,
+      i.e. separate index pages.
+
+INSTRUCTIONS:
+    - Edit config.json to your needs:
+        - TITLE: website title (i.e. which shows up in address bar and on homepage)
+        - SITE_URL: url which the website will be located at.
+        - POST_DIRECTORIES: list of directories where markdown files are
+          located, multiple locations are supported.
+        - RECENT_POSTS_DIRECTORY: name of directory which you want displayed on
+          home page (by default the five latest posts from this directory will
+          be shown).
+        - SERVE_DIR: location where html files will be converted to (and from
+          where the website will be served via the web server). NOTE: this
+          location is removed at the beginning of conversion, so don't store
+          anything here! Store static files (eg images) in the 'assets' folder.
+    - Run `php generate_site.php`
+
+SHORTCOMINGS:
+    - Current implementation uses the simple solution of just removing the
+      serve directory at the start of conversion, both to encompass changed
+      files as well as deleted files. Ideally this should be cached somehow, and
+      only posts which have either been updated or removed should be converted.
+      But, since the overhead is so minimal (unless you have thousands of
+      posts) I don't see the effort worth the payoff.
+
+CSS inspired by https://nabeelqu.co/, https://paulgraham.com/, and
+https://www.schneier.com
