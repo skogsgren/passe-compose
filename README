@@ -32,6 +32,10 @@ INSTRUCTIONS:
           anything here! Store static files (eg images) in the 'assets' folder.
     - Run `php generate_site.php`
 
+    This is preferably run on e.g. Netlify, where the only thing you need to do
+    to get this running is forking this repo, point Netlify to that git
+    repo, and then have `php generate_site.php` as the build command.
+
 SHORTCOMINGS:
     - Current implementation uses the simple solution of just removing the
       serve directory at the start of conversion, both to encompass changed
