@@ -8,7 +8,6 @@ use Pagerange\Markdown\MetaParsedown;
 
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/templates');
 $twig = new \Twig\Environment($loader);
-$md = new ParsedownExtra();
 $mp = new MetaParsedown();
 
 $config = json_decode(file_get_contents("config.json"), true);
@@ -53,6 +52,9 @@ foreach($post_directories as $post_dir){
     $posts = scandir($post_dir);
     foreach($posts as $post_filename){
         if($post_filename == "." || $post_filename == "..") continue;
+
+        // This is necessary to reset footnote numbering
+        $md = new ParsedownExtra();
 
         $raw = file_get_contents($post_dir . '/' . $post_filename);
 
