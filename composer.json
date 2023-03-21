@@ -1,8 +1,7 @@
 {
     "require": {
         "twig/twig": "^3.5",
-        "erusev/parsedown": "^1.7",
-        "pagerange/metaparsedown": "^1.0",
-        "erusev/parsedown-extra": "^0.8.1"
+        "erusev/parsedown-extra": "^0.8.1",
+        "pagerange/metaparsedown": "^1.0"
     }
 }
