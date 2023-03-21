@@ -8,6 +8,7 @@ use Pagerange\Markdown\MetaParsedown;
 
 $loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/templates');
 $twig = new \Twig\Environment($loader);
+$md = new ParsedownExtra();
 $mp = new MetaParsedown();
 
 $config = json_decode(file_get_contents("config.json"), true);
@@ -56,7 +57,7 @@ foreach($post_directories as $post_dir){
         $raw = file_get_contents($post_dir . '/' . $post_filename);
 
         $md_title = $mp->meta($raw)["title"];
-        $md_body = $mp->text($raw);
+        $md_body = $md->text($mp->stripMeta($raw));
         $template = $twig->load('post.html');
 
         // since filename conventions are e.g. 2023-02-25-POSTNAME.md
