@@ -37,6 +37,8 @@ mkdir($serve_dir, 0777, true);
 
 $post_directories = $config["post_directories"];
 $recent_posts_dir = $config["recent_posts_directory"];
+$rss_dirs = $config["rss_dirs"];
+$rss_arr = [];  // empty array for creation of RSS feed later
 
 // GENERATE POSTS AND INDEX HTML FOR EACH DIRECTORY
 foreach($post_directories as $post_dir){
@@ -90,6 +92,20 @@ foreach($post_directories as $post_dir){
                 "date"=>$name_arr[0] . '-' . $name_arr[1] . '-' . $name_arr[2]
             )
         );
+
+        // add to RSS array if directory in desired RSS directories
+        if (in_array($post_dir, $rss_dirs)){
+            array_push(
+                $rss_arr,
+                array(
+                    "title"=>htmlspecialchars($md_title, ENT_XML1, 'UTF-8'),
+                    "url"=>$config["site_url"] . '/' . $post_dir . '/' . $filename_wo_ext . '.html',
+                    "date"=>date('r', strtotime($name_arr[0] . '-' . $name_arr[1] . '-' . $name_arr[2])),
+                    "description"=>htmlspecialchars(strip_tags(substr($md_body, 0, 550)), ENT_XML1, 'UTF-8'),
+                    "sortDate"=>strtotime($name_arr[0] . '-' . $name_arr[1] . '-' . $name_arr[2])
+                )
+            );
+        }
     }
 
     // INDEX CREATION FOR POST DIR
@@ -112,7 +128,6 @@ foreach($post_directories as $post_dir){
 }
 
 // GENERATE HOMEPAGE
-
 $about_me = file_get_contents('assets/about.md');
 $about_me = $mp->text($about_me);
 
@@ -124,6 +139,38 @@ $html = $template->render([
     "about_me" => $about_me,
 ]);
 file_put_contents($serve_dir . '/index.html', $html);
+
+// GENERATE RSS FEED
+$feed = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"></rss>');
+$channel = $feed->addChild('channel');
+$channel->addChild('title', $config["title"]);
+$channel->addChild('link', $config["site_url"]);
+$channel->addChild('description', $config["site_description"]);
+
+// Add favicon to the feed
+$image = $channel->addChild('image');
+$image->addChild('url', $config["site_url"] . "/assets/favicon.ico");
+$image->addChild('title', $config["title"]);
+$image->addChild('link', $config["site_url"]);
+
+// Sort RSS array according to date in associative array, oldest first
+array_multisort(
+    array_column($rss_arr, 'sortDate'),
+    SORT_DESC,
+    $rss_arr
+);
+
+// Add each post to RSS XML
+foreach ($rss_arr as $post) {
+  $item = $channel->addChild('item');
+  $item->addChild('title', $post["title"]);
+  $item->addChild('description', $post["description"]);
+  $item->addChild('link', $post["url"]);
+  $item->addChild('pubDate', $post["date"]);
+}
+
+file_put_contents($serve_dir . '/feed.xml', $feed->asXML());
+
 
 // COPY ASSETS FOLDER TO SERVE DIR
 exec('cp -r assets ' . $serve_dir);

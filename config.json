@@ -1,7 +1,10 @@
 {
-    "title": "Passe Compose",
+    "n_recent_posts": 1,
     "post_directories": ["thoughts"],
     "recent_posts_directory": "thoughts",
-    "n_recent_posts": 1,
-    "serve_dir": "serve"
+    "rss_dirs": ["thoughts"],
+    "serve_dir": "serve",
+    "site_url": "https://example.com",
+    "site_description": "Thoughts straight from the mainframe.",
+    "title": "Passe Compose"
 }

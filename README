@@ -13,6 +13,7 @@ BUT REALLY, WHY?
 
 FEATURES:
     - Should be fully compatible with posts written with Jekyll in mind.
+    - RSS support, although I capped the description at 550 characters, simply because I       don't like it when a post is displayed in full in RSS readers.
     - Different types of indexed posts, since I wanted to host both blog posts
       and random scraps of writing, but I didn't want them in the same place,
       i.e. separate index pages.
@@ -30,19 +31,33 @@ INSTRUCTIONS:
           where the website will be served via the web server). NOTE: this
           location is removed at the beginning of conversion, so don't store
           anything here! Store static files (eg images) in the 'assets' folder.
+        - RSS_DIRS: directories where posts should be added to RSS feeds.
+        - SITE_DESCRIPTION: short description of website. Only used for RSS.
+        - SITE_URL: the url where the website will be served. Only used for RSS.
     - Run `php generate_site.php`
 
     This is preferably run on e.g. Netlify, where the only thing you need to do
     to get this running is forking this repo, point Netlify to that git
-    repo, and then have `php generate_site.php` as the build command.
+    repo, and then have `php generate_site.php` as the build command. If run on
+    your own server, just make sure that the serve directory is the root of the
+    web server (but again, make sure that the serve directory is empty, so that
+    you don't lose any files!).
+
+    The naming convention for the posts are compatible with Jekyll, e.g.
+    '2023-03-01-title-of-post.md', where the date is the publish date for the
+    post and 'title-of-post' becomes that post's url (in relation to it's
+    parent directory). So for the example provided in this repo that url would
+    be 'localhost/thoughts/a-thought.html'.
 
 SHORTCOMINGS:
-    - Current implementation uses the simple solution of just removing the
-      serve directory at the start of conversion, both to encompass changed
-      files as well as deleted files. Ideally this should be cached somehow, and
-      only posts which have either been updated or removed should be converted.
-      But, since the overhead is so minimal (unless you have thousands of
-      posts) I don't see the effort worth the payoff.
+    Current implementation uses the simple solution of just removing the
+    serve directory at the start of conversion, both to encompass changed
+    files as well as deleted files. Additionally, the current implementation
+    uses the simple solution of just copying the assets folder each time
+    Ideally this should be cached somehow, and only posts which have either been
+    updated or removed should be converted.  But, since the overhead is so minimal
+    (unless you have thousands of posts, or a really huge assets folder) I
+    don't see the effort worth the payoff.
 
 CSS inspired by https://nabeelqu.co/, https://paulgraham.com/, and
-https://www.schneier.com
+https://www.schneier.com.

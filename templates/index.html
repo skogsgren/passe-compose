@@ -1,5 +1,9 @@
 {% extends "skeleton.html" %}
 
+{% block header %}
+<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="feed.xml" />
+{% endblock %}
+
 {% block title %} {{ site_title }} {% endblock %}
 
 {% block content %}
@@ -9,7 +13,7 @@
   <ul class="nav">
       {% for name in topics %}
       <li>
-          <a href="{{name}}">{{name|capitalize}}</a>
+          <a href="{{name}}">{{name|upper}}</a>
       </li>
       {% endfor %}
   </ul>
