@@ -10,11 +10,15 @@
     --nav_btn_hover_dark: #bd8484;
 }
 
+body {
+    font-family: sans-serif;
+    line-height: 1.2;
+}
 
 img {
     display: block;
     width: 80%;
-    margin: 3rem auto 0 auto;
+    margin: 0 auto;
 }
 
 #profile_picture {
@@ -26,32 +30,29 @@ p.caption {
     font-size: 0.85rem;
 }
 
-h1 h2 h3 h4 {
+h1, h2, h3, h4 {
     font-weight: bold;
-    font-size: 1.5rem;
 }
 
-h1 {
+h1, h2 {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--title_color);
 }
 
-h2 {
-    text-align: center;
-    font-size: 1.5rem;
+h3 {
+    font-size: 1.25rem;
+    color: var(--text_color);
 }
 
 h4 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+    color: var(--text_color);
 }
-
-h1, h2, h3, h4, p, td, tr, th {
-    font-family: sans-serif;
-}
-
 
 p {
+    padding: 5px 10px;
+    font-size: 1.1em;
     color: var(--text_color);
 }
 
@@ -59,21 +60,27 @@ p {
     font-weight: bold;
 }
 
-th{
+th, td{
+    padding: 5px 10px;
     text-align: left;
+}
+
+blockquote {
+    border-left: 4px solid var(--bg_color);
 }
 
 #nav_bar {
     text-align: center;
 }
 
-.nav{
+.nav {
     padding-left: 0px;
     list-style:none;
     display: inline-block;
 }
 
 .nav li {
+    font-family: CharisSL;
     float:left;
     margin: 0 2px;
 }
@@ -97,7 +104,8 @@ th{
     border-left:2px solid #815444;
 }
 
-@media (max-width: 500px) {
+
+@media (max-width: 675px) {
     body {
         background-color: var(--text_bg_color);
     }
@@ -110,7 +118,7 @@ th{
     }
 }
 
-@media (min-width: 500px) {
+@media (min-width: 676px) {
     body {
         background-color: var(--bg_color);
     }
