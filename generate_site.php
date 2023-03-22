@@ -12,6 +12,7 @@ $mp = new MetaParsedown();
 
 $config = json_decode(file_get_contents("config.json"), true);
 
+// create serve dir
 $serve_dir = $config["serve_dir"];
 function removeDir($dirname) {
     if (is_dir($dirname)) {
@@ -35,6 +36,7 @@ if (file_exists($serve_dir)){
 }
 mkdir($serve_dir, 0777, true);
 
+// initialize variables
 $post_directories = $config["post_directories"];
 $recent_posts_dir = $config["recent_posts_directory"];
 $rss_dirs = $config["rss_dirs"];
@@ -42,12 +44,8 @@ $rss_arr = [];  // empty array for creation of RSS feed later
 
 // GENERATE POSTS AND INDEX HTML FOR EACH DIRECTORY
 foreach($post_directories as $post_dir){
-    // create directory if it does not already exist
 	$dir_path = $serve_dir . '/' . $post_dir;
-	if (!is_dir($dir_path)) {
-	    mkdir($dir_path, 0777, true);
-	}
-
+	mkdir($dir_path, 0777, true);
     $post_arr = array();
 
     // CONVERSION OF POSTS TO HTML
