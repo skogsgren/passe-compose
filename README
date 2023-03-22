@@ -8,19 +8,21 @@ BUT REALLY, WHY?
     I wanted to make my own website more extensible and dynamic in a way that
     is easy to understand, meaning third-party libraries with minimal features:
     just a markdown parser and a template engine. This also means that it is by
-    far less feature packed than pretty much every static site generator out there
-    (by design).
+    far less feature packed than pretty much every static site generator out
+    there (by design).
 
 FEATURES:
     - Should be fully compatible with posts written with Jekyll in mind.
-    - RSS support, although I capped the description at 550 characters, simply because I       don't like it when a post is displayed in full in RSS readers.
+    - RSS support, although I capped the description at 550 characters, simply
+      because I don't like it when a post is displayed in full in RSS readers.
     - Different types of indexed posts, since I wanted to host both blog posts
       and random scraps of writing, but I didn't want them in the same place,
       i.e. separate index pages.
 
 INSTRUCTIONS:
     - Edit config.json to your needs:
-        - TITLE: website title (i.e. which shows up in address bar and on homepage)
+        - TITLE: website title (i.e. which shows up in address bar and on
+                 homepage)
         - SITE_URL: url which the website will be located at.
         - POST_DIRECTORIES: list of directories where markdown files are
           located, multiple locations are supported.
@@ -55,9 +57,9 @@ SHORTCOMINGS:
     files as well as deleted files. Additionally, the current implementation
     uses the simple solution of just copying the assets folder each time
     Ideally this should be cached somehow, and only posts which have either been
-    updated or removed should be converted.  But, since the overhead is so minimal
-    (unless you have thousands of posts, or a really huge assets folder) I
-    don't see the effort worth the payoff.
+    updated or removed should be converted.  But, since the overhead is so
+    minimal (unless you have thousands of posts, or a really huge assets folder)
+    I don't see the effort worth the payoff.
 
 CSS inspired by https://nabeelqu.co/, https://paulgraham.com/, and
 https://www.schneier.com.
