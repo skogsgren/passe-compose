@@ -49,7 +49,7 @@ INSTRUCTIONS:
     '2023-03-01-title-of-post.md', where the date is the publish date for the
     post and 'title-of-post' becomes that post's url (in relation to it's
     parent directory). So for the example provided in this repo that url would
-    be 'localhost/thoughts/a-thought.html'.
+    be 'https://example.com/thoughts/a-thought.html'.
 
 SHORTCOMINGS:
     Current implementation uses the simple solution of just removing the
