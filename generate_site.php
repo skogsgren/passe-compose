@@ -14,25 +14,8 @@ $config = json_decode(file_get_contents("config.json"), true);
 
 // create serve dir
 $serve_dir = $config["serve_dir"];
-function removeDir($dirname) {
-    if (is_dir($dirname)) {
-        $dir = new RecursiveDirectoryIterator($dirname, RecursiveDirectoryIterator::SKIP_DOTS);
-        foreach (new RecursiveIteratorIterator($dir, RecursiveIteratorIterator::CHILD_FIRST) as $object) {
-            if ($object->isFile()) {
-                unlink($object);
-            } elseif($object->isDir()) {
-                rmdir($object);
-            } else {
-                throw new Exception('Unknown object type: '. $object->getFileName());
-            }
-        }
-        rmdir($dirname);
-    } else {
-        throw new Exception('Not a directory');
-    }
-}
 if (file_exists($serve_dir)){
-    removeDir($serve_dir);
+    exec('rm -r ' . $serve_dir);
 }
 mkdir($serve_dir, 0777, true);
 
