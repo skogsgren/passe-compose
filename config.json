@@ -1,6 +1,6 @@
 {
     "n_recent_posts": 1,
-    "post_directories": ["thoughts"],
+    "post_directories": ["thoughts", "notes"],
     "recent_posts_directory": "thoughts",
     "rss_dirs": ["thoughts"],
     "serve_dir": "serve",
