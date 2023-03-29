@@ -8,10 +8,11 @@
     --nav_btn_hover_bg: #cc8f8f;
     --nav_btn_hover_light: #cfa5a5;
     --nav_btn_hover_dark: #bd8484;
+    --font-choice: sans-serif;
 }
 
 body {
-    font-family: sans-serif;
+    font-family: var(--font-choice);
     line-height: 1.2;
 }
 
@@ -80,7 +81,7 @@ blockquote {
 }
 
 .nav li {
-    font-family: CharisSL;
+    font-family: var(--font-choice);
     float:left;
     margin: 0 2px;
 }
