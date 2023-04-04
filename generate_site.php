@@ -17,7 +17,7 @@ $serve_dir = $config["serve_dir"];
 if (file_exists($serve_dir)){
     exec('rm -r ' . $serve_dir);
 }
-mkdir($serve_dir, 0777, true);
+mkdir($serve_dir, 0755, true);
 
 // initialize variables
 $post_directories = $config["post_directories"];
@@ -28,7 +28,7 @@ $rss_arr = [];  // empty array for creation of RSS feed later
 // GENERATE POSTS AND INDEX HTML FOR EACH DIRECTORY
 foreach($post_directories as $post_dir){
 	$dir_path = $serve_dir . '/' . $post_dir;
-	mkdir($dir_path, 0777, true);
+	mkdir($dir_path, 0755, true);
     $post_arr = array();
 
     // CONVERSION OF POSTS TO HTML
