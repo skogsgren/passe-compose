@@ -2,13 +2,49 @@
     --bg_color: lightsteelblue;
     --text_color: black;
     --text_bg_color: white;
-    --title_color: #660000;
-    --title_color_lighter: #800000;
-    --title_color_darker: #4d0000;
-    --nav_btn_hover_bg: #cc8f8f;
-    --nav_btn_hover_light: #cfa5a5;
-    --nav_btn_hover_dark: #bd8484;
+
+    /* HSL values for title color */
+    --colorPrimary-h: 0;
+    --colorPrimary-s: 100%;
+    --colorPrimary-l: 20%;
+
+    --title_color: hsl(var(--colorPrimary-h) var(--colorPrimary-s) var(--colorPrimary-l));
     --font-choice: sans-serif;
+
+    /* saturation and light percentages */
+    --sp: 50%;
+    --lp: 10%;
+
+    --title_color_lighter: hsl(
+        var(--colorPrimary-h)
+        var(--colorPrimary-s)
+        calc(var(--colorPrimary-l) + var(--lp))
+    );
+
+    --title_color_darker: hsl(
+        var(--colorPrimary-h)
+        var(--colorPrimary-s)
+        calc(var(--colorPrimary-l) - var(--lp))
+    );
+
+    --nav_btn_hover: hsl(
+        var(--colorPrimary-h)
+        calc(var(--colorPrimary-s) - var(--sp))
+        calc(var(--colorPrimary-l) + calc(var(--lp) * 4))
+    );
+
+    --nav_btn_hover_lighter: hsl(
+        var(--colorPrimary-h)
+        calc(var(--colorPrimary-s) - var(--sp))
+        calc(var(--colorPrimary-l) + calc(var(--lp) * 5))
+    );
+
+    --nav_btn_hover_darker: hsl(
+        var(--colorPrimary-h)
+        calc(var(--colorPrimary-s) - var(--sp))
+        calc(var(--colorPrimary-l) + calc(var(--lp) * 3))
+    );
+
 }
 
 body {
@@ -85,6 +121,7 @@ blockquote {
     float:left;
     margin: 0 2px;
 }
+
 .nav li a {
     text-decoration:none;
     padding:7px 20px;
@@ -97,13 +134,14 @@ blockquote {
 }
 
 .nav li a:hover {
-    background:#a37666;
-    color:#000;
-    border-top:2px solid #815444;
-    border-right:2px solid #c59888;
-    border-bottom:2px solid #c59888;
-    border-left:2px solid #815444;
+    background: var(--nav_btn_hover);
+    color: var(--text_color);
+    border-top:2px solid var(--nav_btn_hover_lighter);
+    border-right:2px solid var(--nav_btn_hover_darker);
+    border-bottom:2px solid var(--nav_btn_hover_lighter);
+    border-left:2px solid var(--nav_btn_hover_darker);
 }
+
 
 
 @media (max-width: 675px) {
@@ -135,4 +173,3 @@ blockquote {
         border: 2px solid var(--text_color);
     }
 }
-
