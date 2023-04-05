@@ -137,9 +137,9 @@ blockquote {
     background: var(--nav_btn_hover);
     color: var(--text_color);
     border-top:2px solid var(--nav_btn_hover_lighter);
+    border-bottom:2px solid var(--nav_btn_hover_darker);
+    border-left:2px solid var(--nav_btn_hover_lighter);
     border-right:2px solid var(--nav_btn_hover_darker);
-    border-bottom:2px solid var(--nav_btn_hover_lighter);
-    border-left:2px solid var(--nav_btn_hover_darker);
 }
 
 
