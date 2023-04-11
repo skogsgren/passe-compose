@@ -76,13 +76,26 @@ foreach($post_directories as $post_dir){
 
         // add to RSS array if directory in desired RSS directories
         if (in_array($post_dir, $rss_dirs)){
+            // so that images are properly rendered in the RSS client
+            $pattern = '/(src)=["|\']\/(.*?)["|\']/i';
+            $base_url = $config["site_url"];
+            $descr = preg_replace_callback(
+                $pattern,
+                function($matches) use ($base_url) {
+                    return $matches[1] . '="' . $base_url . '/' . $matches[2] . '"';
+                },
+                $md_body
+            );
             array_push(
                 $rss_arr,
                 array(
                     "title"=>htmlspecialchars($md_title, ENT_XML1, 'UTF-8'),
                     "url"=>$config["site_url"] . '/' . $post_dir . '/' . $filename_wo_ext . '.html',
-                    "date"=>date('r', strtotime($name_arr[0] . '-' . $name_arr[1] . '-' . $name_arr[2])),
-                    "description"=>htmlspecialchars(strip_tags(substr($md_body, 0, 550)), ENT_XML1, 'UTF-8'),
+                    "date"=>date(
+                        'r',
+                        strtotime($name_arr[0] . '-' . $name_arr[1] . '-' . $name_arr[2])
+                    ),
+                    "description"=>htmlspecialchars($descr, ENT_XML1, 'UTF-8'),
                     "sortDate"=>strtotime($name_arr[0] . '-' . $name_arr[1] . '-' . $name_arr[2])
                 )
             );
