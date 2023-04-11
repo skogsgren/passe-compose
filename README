@@ -13,8 +13,7 @@ BUT REALLY, WHY?
 
 FEATURES:
     - Should be fully compatible with posts written with Jekyll in mind.
-    - RSS support, although I capped the description at 550 characters, simply
-      because I don't like it when a post is displayed in full in RSS readers.
+    - RSS support
     - Different types of indexed posts, since I wanted to host both blog posts
       and random scraps of writing, but I didn't want them in the same place,
       i.e. separate index pages.
