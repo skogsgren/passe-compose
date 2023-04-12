@@ -18,7 +18,7 @@
 <tbody>
   {% for post in posts %}
     <tr>
-      <td>{{ post.date }}</td>
+      <td class="dyn_width">{{ post.date }}</td>
       <td><a href="{{post.url}}">{{ post.title }}</a></td>
     </tr>
   {% endfor %}

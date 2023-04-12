@@ -1,6 +1,7 @@
 :root {
     --bg_color: lightsteelblue;
     --text_color: black;
+    --text_bg_color_dark_theme: #393053;
     --text_bg_color: white;
 
     /* HSL values for title color */
@@ -8,7 +9,11 @@
     --colorPrimary-s: 100%;
     --colorPrimary-l: 20%;
 
-    --title_color: hsl(var(--colorPrimary-h) var(--colorPrimary-s) var(--colorPrimary-l));
+    --title_color: hsl(
+        var(--colorPrimary-h)
+        var(--colorPrimary-s)
+        var(--colorPrimary-l)
+    );
     --font-choice: sans-serif;
 
     /* saturation and light percentages */
@@ -102,6 +107,15 @@ th, td{
     text-align: left;
 }
 
+td {
+    height: 10px;
+}
+
+td.dyn_width {
+    white-space: nowrap;
+    width: 1%;
+}
+
 blockquote {
     border-left: 4px solid var(--bg_color);
 }
@@ -142,8 +156,6 @@ blockquote {
     border-right:2px solid var(--nav_btn_hover_darker);
 }
 
-
-
 @media (max-width: 675px) {
     body {
         background-color: var(--text_bg_color);
@@ -154,6 +166,16 @@ blockquote {
         margin: 0;
         padding: 5px;
         background-color: var(--text_bg_color);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        #content {
+            background-color: var(--text_bg_color_dark_theme);
+        }
+
+        p, h2, h3, td, th, blockquote {
+            color: var(--text_bg_color);
+        }
     }
 }
 
@@ -171,5 +193,16 @@ blockquote {
         padding: 5px 10px;
         background-color: var(--text_bg_color);
         border: 2px solid var(--text_color);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        #content {
+            background-color: var(--text_bg_color_dark_theme);
+            border: 2px solid var(--text_bg_color);
+        }
+
+        p, h2, h3, td, th, blockquote {
+            color: var(--text_bg_color);
+        }
     }
 }
