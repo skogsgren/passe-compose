@@ -167,16 +167,6 @@ blockquote {
         padding: 5px;
         background-color: var(--text_bg_color);
     }
-
-    @media (prefers-color-scheme: dark) {
-        #content {
-            background-color: var(--text_bg_color_dark_theme);
-        }
-
-        p, h2, h3, td, th, blockquote {
-            color: var(--text_bg_color);
-        }
-    }
 }
 
 @media (min-width: 676px) {
@@ -193,16 +183,5 @@ blockquote {
         padding: 5px 10px;
         background-color: var(--text_bg_color);
         border: 2px solid var(--text_color);
-    }
-
-    @media (prefers-color-scheme: dark) {
-        #content {
-            background-color: var(--text_bg_color_dark_theme);
-            border: 2px solid var(--text_bg_color);
-        }
-
-        p, h2, h3, td, th, blockquote {
-            color: var(--text_bg_color);
-        }
     }
 }
